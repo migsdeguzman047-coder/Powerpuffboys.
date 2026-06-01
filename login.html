@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ALAGAQ Login</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    background:#C2F2E4;
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+.login-container{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+}
+
+.login-box{
+    background:#EDF7BE;
+    width:420px;
+    padding:40px;
+    border-radius:18px;
+    border:2px solid #b8c98d;
+}
+
+h1{
+    text-align:center;
+    color:#35524a;
+    font-size:2.8rem; /* Slightly reduced to account for logo space */
+    letter-spacing:2px;
+    margin-top: 0;
+    margin-bottom:40px;
+}
+
+/* Style for the heart logo */
+.login-logo {
+    width: 70px; /* Matches the size in your screenshot */
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto; /* Centers the image and pushes text down */
+}
+
+label{
+    display:block;
+    margin-bottom:10px;
+    color:#35524a;
+    font-weight:bold;
+    font-size:1.4rem;
+}
+
+input{
+    width:100%;
+    padding:18px;
+    border-radius:15px;
+    border:2px solid #b8c98d;
+    font-size:1.2rem;
+    margin-bottom:25px;
+    outline:none;
+}
+
+input:focus{
+    border-color:#35524a;
+}
+
+button{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:15px;
+    background:#D32F2F;
+    color:white;
+    font-size:1.5rem;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#b02626;
+}
+
+#error{
+    text-align:center;
+    color:#D32F2F;
+    margin-top:15px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-container">
+    <div class="login-box">
+
+        <h1>
+            <img src="logo.png" alt="ALAGAQ Logo" class="login-logo">
+            ALAGAQ
+        </h1>
+
+        <label>Username:</label>
+        <input type="text" id="username" placeholder="Enter username">
+
+        <label>Password:</label>
+        <input type="password" id="password" placeholder="Enter password">
+
+        <button onclick="login()">LOGIN</button>
+
+        <p id="error"></p>
+    </div>
+</div>
+
+<script>
+function login(){
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    if(username === "admin" && password === "1234"){
+        localStorage.setItem("adminLoggedIn","true");
+        window.location.href = "interface_c.html";
+    }else{
+        document.getElementById("error").innerHTML = "Invalid Username or Password";
+    }
+}
+</script>
+
+</body>
+</html>
