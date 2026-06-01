@@ -79,6 +79,596 @@
             border-radius: 20px;
             font-size: 0.82rem;
             font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            user-select: none;
+        }
+
+        .header-badge:hover {
+            background: #d8f0a0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(53, 82, 74, 0.15);
+        }
+
+        .header-badge:active {
+            transform: translateY(0);
+        }
+
+
+        .main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .box {
+            background: #EDF7BE;
+            padding: 30px 28px;
+            border-radius: 15px;
+            border: 2px solid #b8c98d;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+        }
+
+        .form-logo-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .form-logo {
+            width: 70px;
+            height: 90px;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        .form-title {
+            color: #35524a;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 18px;
+        }
+
+        label {
+            color: #35524a;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px 15px;
+            border-radius: 10px;
+            border: 2px solid #b8c98d;
+            font-size: 1rem;
+            outline: none;
+            background: white;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #35524a;
+            box-shadow: 0 0 8px rgba(53, 82, 74, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 10px;
+            background-color: #D32F2F;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 8px;
+            letter-spacing: 1px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #b02626;
+            transform: translateY(-2px);
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-overlay.active {
+            display: flex;
+        }
+
+        .popup-box {
+            background: white;
+            border-radius: 20px;
+            border: 3px dashed #D32F2F;
+            padding: 50px 45px;
+            text-align: center;
+            max-width: 380px;
+            width: 90%;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25),
+                        0 0 0 6px rgba(211, 47, 47, 0.1);
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to   { transform: scale(1);   opacity: 1; }
+        }
+
+        .popup-label {
+            color: #35524a;
+            font-size: 0.95rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .popup-service {
+            color: #888;
+            font-size: 0.82rem;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .popup-ticket-number {
+            color: #D32F2F;
+            font-size: 5rem;
+            font-weight: bold;
+            letter-spacing: 6px;
+            margin: 10px 0 8px 0;
+            line-height: 1;
+        }
+
+        .popup-divider {
+            width: 60%;
+            border: none;
+            border-top: 2px dashed #D32F2F;
+            margin: 16px auto 16px auto;
+        }
+
+        .popup-note {
+            color: #888;
+            font-size: 0.8rem;
+            margin-bottom: 28px;
+        }
+
+        .popup-ok-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #D32F2F;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .popup-ok-btn:hover {
+            background: #b02626;
+            transform: translateY(-2px);
+        }
+
+        .aboutus-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 998;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .aboutus-overlay.active {
+            display: flex;
+        }
+
+        .aboutus-box {
+            background: white;
+            border-radius: 20px;
+            border: 3px solid #b8c98d;
+            padding: 40px 38px;
+            text-align: center;
+            max-width: 460px;
+            width: 90%;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2),
+                        0 0 0 6px rgba(184, 201, 141, 0.15);
+            animation: popIn 0.3s ease;
+        }
+
+        .aboutus-logo-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .aboutus-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        .aboutus-title {
+            color: #35524a;
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .aboutus-sdg-badge {
+            display: inline-block;
+            background: #EDF7BE;
+            border: 2px solid #b8c98d;
+            color: #35524a;
+            font-size: 0.78rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+        }
+
+        .aboutus-divider {
+            width: 50%;
+            border: none;
+            border-top: 2px dashed #b8c98d;
+            margin: 0 auto 18px auto;
+        }
+
+        .aboutus-text {
+            color: #4a6b62;
+            font-size: 0.93rem;
+            line-height: 1.75;
+            text-align: left;
+            margin-bottom: 28px;
+        }
+
+        .aboutus-close-btn {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 10px;
+            background: #35524a;
+            color: white;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .aboutus-close-btn:hover {
+            background: #243d36;
+            transform: translateY(-2px);
+        }
+
+
+        .footer {
+            background: white;
+            border-top: 3px solid #b8c98d;
+            padding: 14px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-col-title {
+            color: #EDF7BE;
+            font-size: 0.85rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            border-bottom: 1px solid #b8c98d;
+            padding-bottom: 6px;
+        }
+
+        .footer-col a,
+        .footer-col span {
+            color: #35524a;
+            font-size: 0.83rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            line-height: 1.5;
+        }
+
+        .footer-col a:hover {
+            color: #EDF7BE;
+        }
+
+        .footer-bottom {
+            background: #2a4139;
+            text-align: center;
+            padding: 10px 40px;
+        }
+
+        .footer-bottom p {
+            color: #7aad9a;
+            font-size: 0.76rem;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-left">
+            <img src="logo.png" class="header-logo" alt="ALAGAQ Logo">
+            <div class="header-brand">
+                <h1>ALAGAQ</h1>
+                <span class="tagline">Bridging the gap to better health, one number at a time.</span>
+            </div>
+        </div>
+        <div class="header-right">
+
+            <span class="header-badge" id="aboutUsBtn">About Us</span>
+        </div>
+    </header>
+
+    <main class="main">
+
+        <div class="card">
+            <div class="box">
+
+                <div class="form-logo-wrap">
+                    <img src="logo.png" class="form-logo" alt="ALAGAQ Logo">
+                </div>
+
+                <p class="form-title">Patient Registration</p>
+
+                <div class="form-group">
+                    <label>Full Name:</label>
+                    <input type="text" id="name" placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label>Service:</label>
+                    <select id="service">
+                        <option value="Vaccination">Vaccination</option>
+                        <option value="Checkup">Checkup</option>
+                        <option value="Consultation">Consultation</option>
+                        <option value="Laboratory">Laboratory</option>
+                    </select>
+                </div>
+
+                <button class="submit-btn" id="getTicketBtn">
+                    GET TICKET
+                </button>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-col">
+            <span class="footer-col-title">Location</span>
+            <span>425 Pasig Blvd. Pasig City, Philippines</span>
+        </div>
+        <div class="footer-col">
+            <span class="footer-col-title">Contact</span>
+            <a href="tel:09154463755">0915 446 3755</a>
+        </div>
+        <div class="footer-col">
+            <span class="footer-col-title">Follow Us</span>
+            <a href="https://www.facebook.com/rmc.doh.gov.ph" target="_blank">
+                facebook.com/rmc.doh.gov.ph
+            </a>
+        </div>
+    </footer>
+
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-box">
+            <p class="popup-label">Your Ticket Number</p>
+            <p class="popup-service" id="popupService">---</p>
+            <div class="popup-ticket-number" id="popupTicketNumber">---</div>
+            <hr class="popup-divider">
+            <button class="popup-ok-btn" onclick="closePopup()">OK</button>
+        </div>
+    </div>
+
+
+    <div class="aboutus-overlay" id="aboutUsOverlay">
+        <div class="aboutus-box">
+            <div class="aboutus-logo-wrap">
+                <img src="logo.png" class="aboutus-logo" alt="ALAGAQ Logo">
+            </div>
+            <p class="aboutus-title">About Us</p>
+            <hr class="aboutus-divider">
+            <p class="aboutus-text">
+                AlagaQ is designed to solve real-world problems that our healthcare experience nowadays aligned with SDG 3 "Good Health and Well-Being". Long lines and crowded places are common in public hospitals due to slow and poor management. AlagaQ aims to ease these problems by providing an efficient queueing system.
+            </p>
+            <button class="aboutus-close-btn" onclick="closeAboutUs()">Close</button>
+        </div>
+    </div>
+
+    <script>
+
+        document.getElementById('getTicketBtn')
+        .addEventListener('click', function () {
+
+            const name    = document.getElementById('name').value.trim();
+            const service = document.getElementById('service').value;
+
+            if (name === "") {
+                return alert("Please enter your name.");
+            }
+
+            let lastNum = parseInt(localStorage.getItem('lastNumber')) || 100;
+            lastNum++;
+
+            const ticketID = "A" + lastNum;
+
+            const queueData = JSON.parse(localStorage.getItem('alagaq_queue')) || [];
+
+            queueData.push({
+                number: ticketID,
+                name: name,
+                service: service
+            });
+
+            localStorage.setItem('alagaq_queue', JSON.stringify(queueData));
+            localStorage.setItem('lastNumber', lastNum);
+
+            document.getElementById('popupTicketNumber').textContent = ticketID;
+            document.getElementById('popupService').textContent = service;
+            document.getElementById('popupOverlay').classList.add('active');
+
+        });
+
+        function closePopup() {
+            document.getElementById('popupOverlay').classList.remove('active');
+            document.getElementById('name').value = "";
+            document.getElementById('service').selectedIndex = 0;
+        }
+
+        document.getElementById('aboutUsBtn')
+        .addEventListener('click', function () {
+            document.getElementById('aboutUsOverlay').classList.add('active');
+        });
+
+        function closeAboutUs() {
+            document.getElementById('aboutUsOverlay').classList.remove('active');
+        }
+
+        document.getElementById('aboutUsOverlay')
+        .addEventListener('click', function (e) {
+            if (e.target === this) closeAboutUs();
+        });
+
+    </script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALAGAQ - Registration</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #C2F2E4;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+
+        .header {
+            background: white;
+            border-bottom: 3px solid #b8c98d;
+            padding: 14px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .header-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        .header-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-brand h1 {
+            color: #35524a;
+            font-size: 2rem;
+            letter-spacing: 3px;
+            line-height: 1;
+        }
+
+        .header-brand .tagline {
+            color: #35524a;
+            font-size: 0.82rem;
+            font-weight: bold;
+            margin-top: 3px;
+            letter-spacing: 1px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-badge {
+            background: #EDF7BE;
+            border: 2px solid #b8c98d;
+            color: #35524a;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: bold;
         }
 
         .main {
