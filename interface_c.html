@@ -3,145 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interface C - Admin Panel</title>
+    <title>ALAGAQ - Admin Terminal </title>
 
     <style>
 
-        *{
-            box-sizing:border-box;
+        * {
+            box-sizing: border-box;
         }
 
-        body{
-            background:#C2F2E4;
-            font-family:Arial,sans-serif;
-            margin:0;
-            padding:20px;
+        body {
+            background: #C2F2E4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .container{
-            background:white;
-            max-width:800px;
-            margin:auto;
-            padding:30px;
-            border-radius:20px;
-            box-shadow:0 10px 25px rgba(0,0,0,0.1);
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            padding: 24px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
-        .header-box{
-            background:#EDF7BE;
-            padding:20px;
-            border-radius:15px;
-            border:2px solid #b8c98d;
-            text-align:center;
-            margin-bottom:20px;
-            position:relative;
+        /* ── Header ── */
+        .header-box {
+            background: #EDF7BE;
+            padding: 16px 20px;
+            border-radius: 15px;
+            border: 2px solid #b8c98d;
+            text-align: center;
+            margin-bottom: 16px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        h1{
-            color:#35524a;
-            margin:0;
-            letter-spacing:2px;
+        h1 {
+            color: #35524a;
+            margin: 0;
+            letter-spacing: 2px;
+            font-size: 1.6rem;
         }
 
-        .logout-btn{
-            position:absolute;
-            right:20px;
-            top:20px;
-            background:#D32F2F;
-            color:white;
-            border:none;
-            padding:10px 15px;
-            border-radius:10px;
-            cursor:pointer;
-            font-weight:bold;
+        .logout-btn {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #D32F2F;
+            color: white;
+            border: none;
+            padding: 9px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.88rem;
+            transition: background 0.2s;
         }
 
-        .logout-btn:hover{
-            background:#b02626;
+        .logout-btn:hover {
+            background: #b02626;
         }
 
-        .controls{
-            display:flex;
-            gap:10px;
-            margin-bottom:20px;
+        /* ── Currently Serving ── */
+        .current-box {
+            background: #fafafa;
+            padding: 16px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 16px;
+            border: 1px solid #eee;
         }
 
-        .controls button{
-            flex:1;
-            padding:15px;
-            border:none;
-            border-radius:10px;
-            cursor:pointer;
-            font-weight:bold;
-            color:white;
+        .current-box h2 {
+            margin: 0 0 6px 0;
+            color: #555;
+            font-size: 1rem;
         }
 
-        #btn-next{
-            background:#35524a;
+        .current-number {
+            font-size: 3rem;
+            color: #D32F2F;
+            font-weight: bold;
+            margin: 0;
+            line-height: 1.1;
         }
 
-        #btn-skip{
-            background:#ff9800;
+        /* ── Controls ── */
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
         }
 
-        #btn-recall{
-            background:#2196f3;
+        .controls button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            background: #D32F2F;
+            transition: background 0.2s, transform 0.15s;
         }
 
-        .current-box{
-            background:#fafafa;
-            padding:20px;
-            border-radius:15px;
-            text-align:center;
-            margin-bottom:20px;
+        .controls button:hover {
+            background: #b02626;
+            transform: translateY(-2px);
         }
 
-        .current-box h2{
-            margin:0;
-            color:#555;
+        .controls button:active {
+            transform: translateY(0);
         }
 
-        .current-number{
-            font-size:3rem;
-            color:#D32F2F;
-            font-weight:bold;
-            margin-top:10px;
+        /* ── Queue List ── */
+        .queue-section-title {
+            color: #35524a;
+            font-size: 0.85rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            padding-left: 4px;
         }
 
-        ul{
-            list-style:none;
-            padding:0;
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px 0;
         }
 
-        .queue-item{
-            background:#fafafa;
-            padding:15px;
-            border-radius:10px;
-            margin-bottom:10px;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
+        .queue-item {
+            background: #fafafa;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #eee;
+            font-size: 0.92rem;
         }
 
-        .item-no{
-            color:#D32F2F;
-            font-weight:bold;
+        .item-no {
+            color: #D32F2F;
+            font-weight: bold;
         }
 
-        .btn-reset{
-            background:#D32F2F;
-            color:white;
-            border:none;
-            padding:15px;
-            width:100%;
-            border-radius:10px;
-            font-weight:bold;
-            cursor:pointer;
-            margin-top:20px;
+        .queue-empty {
+            text-align: center;
+            color: #aaa;
+            font-size: 0.88rem;
+            padding: 16px 0;
         }
 
-        .btn-reset:hover{
-            background:#b02626;
+        /* ── Reset Button ── */
+        .btn-reset {
+            background: #D32F2F;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .btn-reset:hover {
+            background: #b02626;
+            transform: translateY(-2px);
+        }
+
+        /* ── Confirm Modal ── */
+        .confirm-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.55);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .confirm-overlay.active {
+            display: flex;
+        }
+
+        .confirm-box {
+            background: white;
+            border-radius: 18px;
+            border: 3px solid #D32F2F;
+            padding: 36px 32px;
+            text-align: center;
+            max-width: 360px;
+            width: 90%;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            animation: popIn 0.25s ease;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.85); opacity: 0; }
+            to   { transform: scale(1);   opacity: 1; }
+        }
+
+        .confirm-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .confirm-title {
+            color: #35524a;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .confirm-msg {
+            color: #777;
+            font-size: 0.88rem;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .confirm-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .confirm-cancel {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #b8c98d;
+            border-radius: 10px;
+            background: white;
+            color: #35524a;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .confirm-cancel:hover {
+            background: #EDF7BE;
+        }
+
+        .confirm-proceed {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #D32F2F;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .confirm-proceed:hover {
+            background: #b02626;
         }
 
     </style>
@@ -152,198 +286,144 @@
 <div class="container">
 
     <div class="header-box">
-
-        <button onclick="logout()" class="logout-btn">
-            Logout
-        </button>
-
+        <button onclick="confirmLogout()" class="logout-btn">Logout</button>
         <h1>ALAGAQ ADMIN</h1>
-
     </div>
 
     <div class="current-box">
-
         <h2>Currently Serving</h2>
-
-        <div class="current-number" id="staff-current-number">
-            --
-        </div>
-
+        <div class="current-number" id="staff-current-number">--</div>
     </div>
 
     <div class="controls">
-
         <button id="btn-next">NEXT</button>
-
         <button id="btn-skip">SKIP</button>
-
         <button id="btn-recall">RECALL</button>
-
     </div>
 
+    <p class="queue-section-title">Up Next</p>
     <ul id="queue-list"></ul>
 
-    <button class="btn-reset" onclick="resetQueue()">
-        RESET DAILY QUEUE
-    </button>
+    <button class="btn-reset" onclick="resetQueue()">RESET DAILY QUEUE</button>
 
+</div>
+
+<!-- Logout Confirmation Modal -->
+<div class="confirm-overlay" id="logoutConfirm">
+    <div class="confirm-box">
+        <p class="confirm-title">Confirm Logout</p>
+        <p class="confirm-msg">Are you sure you want to log out of the admin panel?</p>
+        <div class="confirm-actions">
+            <button class="confirm-cancel" onclick="closeConfirm('logoutConfirm')">Cancel</button>
+            <button class="confirm-proceed" onclick="logout()">Logout</button>
+        </div>
+    </div>
 </div>
 
 <script>
 
-    if(localStorage.getItem("adminLoggedIn") !== "true"){
-
+    if (localStorage.getItem("adminLoggedIn") !== "true") {
         window.location.href = "login.html";
-
     }
 
-    function updateStaffPanel(){
+    let lastRemovedItem = null;
+    let lastRemovedIndex = 0;
 
-        const queueData =
-        JSON.parse(localStorage.getItem('alagaq_queue')) || [];
+    function updateStaffPanel() {
+        const queueData = JSON.parse(localStorage.getItem('alagaq_queue')) || [];
+        const currentNumDisplay = document.getElementById('staff-current-number');
+        const queueListUI = document.getElementById('queue-list');
 
-        const currentNumDisplay =
-        document.getElementById('staff-current-number');
+        if (queueData.length > 0) {
+            currentNumDisplay.innerText = queueData[0].number;
 
-        const queueListUI =
-        document.getElementById('queue-list');
-
-        if(queueData.length > 0){
-
-            currentNumDisplay.innerText =
-            queueData[0].number;
-
-            const nextPatients =
-            queueData.slice(1);
-
-            queueListUI.innerHTML =
-            nextPatients.map(p => `
-
+            const nextPatients = queueData.slice(1);
+            queueListUI.innerHTML = nextPatients.map(p => `
                 <li class="queue-item">
-
                     <div>
-                        <span class="item-no">
-                            ${p.number}
-                        </span>
-
-                        - ${p.name}
+                        <span class="item-no">${p.number}</span> - ${p.name}
                     </div>
-
-                    <div>
-                        ${p.service}
-                    </div>
-
+                    <div>${p.service}</div>
                 </li>
-
             `).join('');
 
-        }else{
-
+        } else {
             currentNumDisplay.innerText = "--";
-
-            queueListUI.innerHTML =
-            "<p style='text-align:center;color:#888;'>Queue is empty</p>";
-
+            queueListUI.innerHTML = "<p class='queue-empty'>Queue is empty</p>";
         }
-
     }
 
-    document.getElementById('btn-next')
-    .addEventListener('click', () => {
-
-        let queueData =
-        JSON.parse(localStorage.getItem('alagaq_queue')) || [];
-
-        if(queueData.length > 0){
-
-            queueData.shift();
-
-            localStorage.setItem(
-                'alagaq_queue',
-                JSON.stringify(queueData)
-            );
-
+    document.getElementById('btn-next').addEventListener('click', () => {
+        let queueData = JSON.parse(localStorage.getItem('alagaq_queue')) || [];
+        if (queueData.length > 0) {
+            lastRemovedItem = queueData.shift();
+            lastRemovedIndex = 0;
+            localStorage.setItem('alagaq_queue', JSON.stringify(queueData));
             updateStaffPanel();
-
-            localStorage.setItem(
-                'newItemTrigger',
-                Date.now()
-            );
-
+            localStorage.setItem('newItemTrigger', Date.now());
         }
-
     });
 
-
-    document.getElementById('btn-skip')
-    .addEventListener('click', () => {
-
-        let queueData =
-        JSON.parse(localStorage.getItem('alagaq_queue')) || [];
-
-        if(queueData.length > 0){
-
+    document.getElementById('btn-skip').addEventListener('click', () => {
+        let queueData = JSON.parse(localStorage.getItem('alagaq_queue')) || [];
+        if (queueData.length > 0) {
+            lastRemovedItem = queueData[0];
+            lastRemovedIndex = queueData.length;
             const skipped = queueData.shift();
-
             queueData.push(skipped);
-
-            localStorage.setItem(
-                'alagaq_queue',
-                JSON.stringify(queueData)
-            );
-
+            localStorage.setItem('alagaq_queue', JSON.stringify(queueData));
             updateStaffPanel();
+            localStorage.setItem('newItemTrigger', Date.now());
+        }
+    });
 
-            localStorage.setItem(
-                'newItemTrigger',
-                Date.now()
-            );
-
+    document.getElementById('btn-recall').addEventListener('click', () => {
+        if (!lastRemovedItem) {
+            alert("Nothing to recall.");
+            return;
         }
 
+        let queueData = JSON.parse(localStorage.getItem('alagaq_queue')) || [];
+
+        queueData = queueData.filter(p => p.number !== lastRemovedItem.number);
+
+        queueData.unshift(lastRemovedItem);
+
+        localStorage.setItem('alagaq_queue', JSON.stringify(queueData));
+        localStorage.setItem('newItemTrigger', Date.now());
+
+        lastRemovedItem = null; // clear after recall
+        updateStaffPanel();
+
+        alert(`Recalled: ${queueData[0].number} — ${queueData[0].name}`);
     });
 
-
-    document.getElementById('btn-recall')
-    .addEventListener('click', () => {
-
-        localStorage.setItem(
-            'newItemTrigger',
-            Date.now()
-        );
-
-        alert("Patient Recalled!");
-
-    });
-
-    function resetQueue(){
-
-        if(confirm("Clear all queue data?")){
-
+    function resetQueue() {
+        if (confirm("Clear all queue data?")) {
             localStorage.removeItem('alagaq_queue');
-
-            localStorage.setItem('lastNumber','100');
-
+            localStorage.setItem('lastNumber', '100');
+            lastRemovedItem = null;
             updateStaffPanel();
-
             alert("Queue Reset Successful");
-
         }
-
     }
 
-    function logout(){
+    // ── Logout with confirmation modal ──
+    function confirmLogout() {
+        document.getElementById('logoutConfirm').classList.add('active');
+    }
 
+    function closeConfirm(id) {
+        document.getElementById(id).classList.remove('active');
+    }
+
+    function logout() {
         localStorage.removeItem("adminLoggedIn");
-
         window.location.href = "login.html";
-
     }
 
     window.addEventListener('storage', updateStaffPanel);
-
     updateStaffPanel();
-
     setInterval(updateStaffPanel, 2000);
 
 </script>
