@@ -1,0 +1,1 @@
+AlagaQ is designed to solve real-world problems that our healthcare experience nowadays aligned with SDG 3 “Good Health and Well-Being”. Long lines and crowded places are common in public hospitals due to slow and poor management. AlagaQ aims to ease these problems by providing an efficient queueing system.
