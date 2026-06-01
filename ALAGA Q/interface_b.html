@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALAGAQ - Public Display</title>
+  <style>
+    body {
+        background: #C2F2E4;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        background: white;
+        height: 90vh;
+        border-radius: 20px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .box {
+        background: #EDF7BE;
+        flex: 1;
+        margin: 10px 0;
+        border-radius: 15px;
+        border: 2px solid #b8c98d;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .now h2 {
+        font-size: 45px;
+        color: #35524a;
+        margin-bottom: 10px;
+    }
+    #nowServing {
+        font-size: 170px;
+        color: #D32F2F;
+        margin: 0;
+        font-weight: bold;
+    }
+    .next h2 {
+        font-size: 30px;
+        color: #35524a;
+        margin-bottom: 10px;
+    }
+    #nextInLine {
+        font-size: 110px;
+        color: #D32F2F;
+        margin: 0;
+        font-weight: bold;
+    }
+    .please-proceed {
+        background: white;
+        text-align: center;
+        padding: 14px 0 4px 0;
+        font-size: 15px;
+        color: #35524a;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box now">
+      <h2>NOW SERVING</h2>
+      <h1 id="nowServing">---</h1>
+    </div>
+    <div class="box next">
+      <h2>NEXT IN LINE</h2>
+      <h1 id="nextInLine">---</h1>
+    </div>
+    <p class="please-proceed">[ Please proceed when your number is called. ]</p>
+  </div>
+  <script>
+    function updateDisplay() {
+        const queueList = JSON.parse(localStorage.getItem('alagaq_queue')) || [];
+        if (queueList.length > 0) {
+            document.getElementById('nowServing').innerText = queueList[0].number;
+        } else {
+            document.getElementById('nowServing').innerText = '---';
+        }
+        if (queueList.length > 1) {
+            document.getElementById('nextInLine').innerText = queueList[1].number;
+        } else {
+            document.getElementById('nextInLine').innerText = '---';
+        }
+    }
+    updateDisplay();
+    setInterval(updateDisplay, 1000);
+    window.addEventListener('storage', updateDisplay);
+  </script>
+</body>
+</html>
