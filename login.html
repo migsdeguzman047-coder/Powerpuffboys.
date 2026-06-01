@@ -1,140 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALAGAQ - Admin Login </title>
 
-<title>ALAGAQ Login</title>
+    <style>
 
-<style>
-*{
-    box-sizing:border-box;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body{
-    background:#C2F2E4;
-    font-family:Arial,sans-serif;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    margin:0;
-}
+        body {
+            background: #C2F2E4;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-.login-container{
-    background:white;
-    padding:25px;
-    border-radius:20px;
-}
+        /* ─── HEADER ─── */
 
-.login-box{
-    background:#EDF7BE;
-    width:420px;
-    padding:40px;
-    border-radius:18px;
-    border:2px solid #b8c98d;
-}
+        .header {
+            background: white;
+            border-bottom: 3px solid #b8c98d;
+            padding: 14px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
 
-h1{
-    text-align:center;
-    color:#35524a;
-    font-size:2.8rem; /* Slightly reduced to account for logo space */
-    letter-spacing:2px;
-    margin-top: 0;
-    margin-bottom:40px;
-}
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
 
-/* Style for the heart logo */
-.login-logo {
-    width: 70px; /* Matches the size in your screenshot */
-    height: auto;
-    display: block;
-    margin: 0 auto 15px auto; /* Centers the image and pushes text down */
-}
+        .header-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
 
-label{
-    display:block;
-    margin-bottom:10px;
-    color:#35524a;
-    font-weight:bold;
-    font-size:1.4rem;
-}
+        .header-brand {
+            display: flex;
+            flex-direction: column;
+        }
 
-input{
-    width:100%;
-    padding:18px;
-    border-radius:15px;
-    border:2px solid #b8c98d;
-    font-size:1.2rem;
-    margin-bottom:25px;
-    outline:none;
-}
+        .header-brand h1 {
+            color: #35524a;
+            font-size: 2rem;
+            letter-spacing: 3px;
+            line-height: 1;
+        }
 
-input:focus{
-    border-color:#35524a;
-}
+        .header-brand .tagline {
+            color: #35524a;
+            font-size: 0.82rem;
+            font-weight: bold;
+            margin-top: 3px;
+            letter-spacing: 1px;
+        }
 
-button{
-    width:100%;
-    padding:18px;
-    border:none;
-    border-radius:15px;
-    background:#D32F2F;
-    color:white;
-    font-size:1.5rem;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
-}
+        /* ─── MAIN ─── */
 
-button:hover{
-    background:#b02626;
-}
+        .main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
 
-#error{
-    text-align:center;
-    color:#D32F2F;
-    margin-top:15px;
-    font-weight:bold;
-}
-</style>
+        .login-container {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .login-box {
+            background: #EDF7BE;
+            width: 420px;
+            padding: 40px;
+            border-radius: 18px;
+            border: 2px solid #b8c98d;
+        }
+
+        .login-logo {
+            width: 70px;
+            height: auto;
+            display: block;
+            margin: 0 auto 15px auto;
+            mix-blend-mode: multiply;
+        }
+
+        .login-title {
+            text-align: center;
+            color: #35524a;
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .login-subtitle {
+            text-align: center;
+            color: #35524a;
+            font-size: 0.88rem;
+            font-weight: bold;
+            margin-bottom: 28px;
+            opacity: 0.75;
+            letter-spacing: 1px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #35524a;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px 18px;
+            border-radius: 12px;
+            border: 2px solid #b8c98d;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            outline: none;
+            background: white;
+        }
+
+        input:focus {
+            border-color: #35524a;
+            box-shadow: 0 0 8px rgba(53, 82, 74, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: #D32F2F;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: #b02626;
+            transform: translateY(-2px);
+        }
+
+        #error {
+            text-align: center;
+            color: #D32F2F;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* ─── FOOTER ─── */
+
+        .footer {
+            background: white;
+            border-top: 3px solid #b8c98d;
+            padding: 18px 40px;
+            text-align: center;
+            box-shadow: 0 -3px 10px rgba(0,0,0,0.06);
+        }
+
+        .footer-motto {
+            color: #35524a;
+            font-size: 0.95rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+
+        .footer-copy {
+            color: #35524a;
+            font-size: 0.75rem;
+            opacity: 0.6;
+            margin-top: 4px;
+        }
+
+    </style>
 </head>
 
 <body>
 
-<div class="login-container">
-    <div class="login-box">
+    <!-- ─── HEADER ─── -->
+    <header class="header">
+        <div class="header-left">
+            <img src="logo.png" class="header-logo" alt="ALAGAQ Logo">
+            <div class="header-brand">
+                <h1>ALAGAQ</h1>
+                <span class="tagline">Bridging the gap to better health, one number at a time.</span>
+            </div>
+        </div>
+    </header>
 
-        <h1>
-            <img src="logo.png" alt="ALAGAQ Logo" class="login-logo">
-            ALAGAQ
-        </h1>
+    <!-- ─── MAIN ─── -->
+    <main class="main">
 
-        <label>Username:</label>
-        <input type="text" id="username" placeholder="Enter username">
+        <div class="login-container">
+            <div class="login-box">
 
-        <label>Password:</label>
-        <input type="password" id="password" placeholder="Enter password">
+                <img src="logo.png" alt="ALAGAQ Logo" class="login-logo">
+                <h1 class="login-title">ALAGAQ</h1>
 
-        <button onclick="login()">LOGIN</button>
+                <label>Username:</label>
+                <input type="text" id="username" placeholder="Enter username">
 
-        <p id="error"></p>
-    </div>
-</div>
+                <label>Password:</label>
+                <input type="password" id="password" placeholder="Enter password">
 
-<script>
-function login(){
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
+                <button onclick="login()">LOGIN</button>
 
-    if(username === "admin" && password === "1234"){
-        localStorage.setItem("adminLoggedIn","true");
-        window.location.href = "interface_c.html";
-    }else{
-        document.getElementById("error").innerHTML = "Invalid Username or Password";
-    }
-}
-</script>
+                <p id="error"></p>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="footer">
+        <p class="footer-motto">"Faster Service, Healthier Futures"</p>
+    </footer>
+
+    <script>
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username === "admin" && password === "1234") {
+                localStorage.setItem("adminLoggedIn", "true");
+                window.location.href = "interface_c.html";
+            } else {
+                document.getElementById("error").innerHTML = "Invalid Username or Password";
+            }
+        }
+
+        // Allow pressing Enter to login
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Enter") login();
+        });
+    </script>
 
 </body>
 </html>
